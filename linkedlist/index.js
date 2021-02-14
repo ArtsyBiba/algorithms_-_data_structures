@@ -90,6 +90,50 @@ class LinkedList {
             this.head = new Node(data);
         }
     }
+
+    getAt(index) {
+        let counter = 0;
+        let node = this.head;
+
+        while (node) {
+            if (counter === index) {
+                return node;
+            }
+
+            counter++;
+            node = node.next;
+        }
+
+        return null;
+    }
+
+    removeAt(index) {
+        if (!this.head) {
+            return null;
+        }
+
+        if (index === 0) {
+            this.head = this.head.next;
+            return this.head;
+        }
+
+        let previousNode = this.getAt(index - 1);
+        let nextNode = this.getAt(index + 1);
+        previousNode.next = nextNode;
+
+        return this.getAt(index);
+    }
+
+    insertAt(data, index) {
+        let previousNode = this.getAt(index - 1);
+        let nextNode = this.getAt(index);
+        
+        if (previousNode) {
+            previousNode.next = new Node(data, nextNode);
+        } else if (index > this.size()) {
+            this.insertLast(data);
+        } else this.head = new Node(data, nextNode);
+    }
 }
 
 module.exports = { Node, LinkedList };
