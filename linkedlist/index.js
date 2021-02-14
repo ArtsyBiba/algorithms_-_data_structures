@@ -134,6 +134,23 @@ class LinkedList {
             this.insertLast(data);
         } else this.head = new Node(data, nextNode);
     }
+
+    forEach(func) {
+        let node = this.head;
+
+        while (node) {
+            func(node);
+            node = node.next;
+        }
+    }
+
+    *[Symbol.iterator]() {
+        let node = this.head;
+        while (node) {
+            yield node;
+            node = node.next;
+        }
+    }
 }
 
 module.exports = { Node, LinkedList };
