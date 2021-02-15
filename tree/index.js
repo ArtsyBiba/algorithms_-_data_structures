@@ -25,6 +25,32 @@ class Node {
     }
 }
 
-class Tree {}
+class Tree {
+    constructor() {
+        this.root = null;
+    }
+
+    traverseBF(func) {
+        const array = [this.root];
+
+        while (array.length) {
+            const node = array.shift();
+            
+            array.push(...node.children);
+            func(node);
+        }
+    }
+
+    traverseDF(func) {
+        const array = [this.root];
+
+        while (array.length) {
+            const node = array.shift();
+            
+            array.unshift(...node.children);
+            func(node);
+        }
+    }
+}
 
 module.exports = { Tree, Node };
