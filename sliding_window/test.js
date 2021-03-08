@@ -1,25 +1,21 @@
-const vowels = require('./index');
+const lengthOfLongestSubstring = require('./indexB');
 
 test('Vowels is a function', () => {
-  expect(typeof vowels).toEqual('function');
+  expect(typeof lengthOfLongestSubstring).toEqual('function');
 });
 
-test('returns the maximum number of vowel letters', () => {
-    expect(vowels('abciiidef', 3)).toEqual(3);
+test('returns the length of the longest substring without repeating characters', () => {
+    expect(lengthOfLongestSubstring('abcabcbb')).toEqual(3);
 });
 
-test('returns the maximum number of vowel letters', () => {
-    expect(vowels('aeiou', 2)).toEqual(2);
+test('returns the length of the longest substring without repeating characters', () => {
+    expect(lengthOfLongestSubstring('bbbbb')).toEqual(1);
 });
 
-test('returns the maximum number of vowel letters', () => {
-    expect(vowels('leetcode', 3)).toEqual(2);
+test('returns the length of the longest substring without repeating characters', () => {
+    expect(lengthOfLongestSubstring('pwwkew')).toEqual(3);
 });
 
-test('returns the maximum number of vowel letters', () => {
-    expect(vowels('rhythms', 4)).toEqual(0);
-});
-
-test('returns the maximum number of vowel letters', () => {
-    expect(vowels('tryhard', 4)).toEqual(1);
+test('returns the length of the longest substring without repeating characters', () => {
+    expect(lengthOfLongestSubstring('')).toEqual(0);
 });
