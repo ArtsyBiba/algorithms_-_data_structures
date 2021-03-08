@@ -8,7 +8,25 @@
 // Output: 3
 
 const vowels = (s, k) => {
-
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    let max = 0;
+    
+    for (let i = 0; i < s.length - k + 1; i++) {
+        const substring = s.slice(i, i + k);
+        let count = 0;
+        
+        for (let letter of substring) {
+            if (vowels.includes(letter)) {
+                count++;
+            }
+        }
+        
+        if (count > max) {
+            max = count;
+        }
+    }
+    
+    return max;
 }
 
 module.exports = vowels;
