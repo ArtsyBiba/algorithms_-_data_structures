@@ -7,6 +7,7 @@
 
 // Return true if there is a cycle in the linked list. Otherwise, return false.
 
+// solution #1
 const hasCycle = function steps(n) {
     if (!head) return false;
     
@@ -22,6 +23,17 @@ const hasCycle = function steps(n) {
         }
     }
     
+    return false;
+}
+
+// solution #2
+const hasCycle = function steps(n) {
+    while (head) {
+        if (head.visited) return true;
+        head.visited = true;
+        head = head.next
+    }
+
     return false;
 }
 
