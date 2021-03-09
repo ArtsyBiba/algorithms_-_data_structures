@@ -6,7 +6,8 @@
 
 // Notice that you should not modify the linked list.
 
-var detectCycle = function(head) {
+// solution #1
+const detectCycle = function(head) {
     while (head) {
         if (head.visited) return head;
         head.visited = true;
@@ -14,6 +15,26 @@ var detectCycle = function(head) {
     }
 
     return head;
+};
+
+// solution #2
+const detectCycle = function(head) {
+    let slow = head;
+    let fast = head;
+    
+    while (fast && fast.next && fast.next.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+        
+        if (slow === fast) {
+            while (head !== fast) {
+                head = head.next;
+                fast = fast.next;
+            }
+            return head;
+        }
+    }
+    return null;
 };
 
 module.exports = detectCycle;
