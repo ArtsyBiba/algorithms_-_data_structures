@@ -8,7 +8,21 @@
 // Return true if there is a cycle in the linked list. Otherwise, return false.
 
 const hasCycle = function steps(n) {
-
+    if (!head) return false;
+    
+    let quick = head.next;
+    let slow = head;
+    
+    while (quick && quick.next) {
+        if (quick === slow) {
+            return true;
+        } else {
+            quick = quick.next.next;
+            slow = slow.next;
+        }
+    }
+    
+    return false;
 }
 
 module.exports = hasCycle;
