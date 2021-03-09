@@ -7,7 +7,13 @@
 // Notice that you should not modify the linked list.
 
 var detectCycle = function(head) {
-    
+    while (head) {
+        if (head.visited) return head;
+        head.visited = true;
+        head = head.next
+    }
+
+    return head;
 };
 
 module.exports = detectCycle;
