@@ -12,10 +12,10 @@ const merge = function (intervals) {
   
     intervals.sort((a, b) => a[0] - b[0]);
     
-    var prev = intervals[0];
-    var res = [prev];
+    let prev = intervals[0];
+    const res = [prev];
     
-    for (var curr of intervals) {
+    for (let curr of intervals) {
         if (curr[0] <= prev[1]) {
           prev[1] = Math.max(prev[1], curr[1]);
         } else {
