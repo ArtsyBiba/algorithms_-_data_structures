@@ -9,5 +9,15 @@
 // Output: "apbqcr"
 
 const mergeAlternately = function (word1, word2) {
-
+    const word1Split = word1.split('');
+    const word2Split = word2.split('');
+    let newWord = [];
+    const longest = Math.max(word1Split.length, word2Split.length)
+    
+    for (let i = 0; i < longest; i++) {
+        newWord.push(word1Split.shift());
+        newWord.push(word2Split.shift());
+    }
+    
+    return newWord.join('');
 }
