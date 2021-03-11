@@ -20,3 +20,22 @@ const findKthPositive = function(arr, k) {
     
     return missing[k - 1];
 };
+
+// faster solution
+const findKthPositive = function(arr, k) {
+    const missing = [];
+    let counter = 1;
+    let i = 0;
+    
+    while (missing.length < k) {
+        if (counter === arr[i]) {
+            i++;
+        } else {
+            missing.push(counter);
+        }
+        
+        counter++;
+    }
+    
+    return missing[k - 1];
+}
