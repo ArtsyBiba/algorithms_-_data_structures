@@ -25,4 +25,16 @@ const reverseList = function (nums) {
   return previous;
 }
 
+// recursive solution
+const reverseList = function (nums) {
+  if (!head || !head.next) return head;
+    
+  const rest = reverseList(head.next);
+  head.next.next = head;
+  
+  head.next = null;
+  
+  return rest;
+}
+
 module.exports = reverseList;
