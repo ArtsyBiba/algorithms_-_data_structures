@@ -9,9 +9,20 @@
 //  @param {ListNode} head
 //  @return {ListNode}
 
-
+// iterative solution
 const reverseList = function (nums) {
-  
+  let current = head;
+  let previous = null;
+  let next = head;
+
+  while (current) {
+      next = current.next;
+      current.next = previous;
+      previous = current;
+      current = next;
+  }
+
+  return previous;
 }
 
 module.exports = reverseList;
