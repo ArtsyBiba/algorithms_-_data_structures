@@ -16,16 +16,17 @@ const zigzagLevelOrder = function (root) {
         
         for (let i = 0; i < size; i++) {
             const node = arr.shift();
-            temp.push(node.val);
+            if (counter % 2 !== 0) {
+                temp.push(node.val);
+            } else {
+                temp.unshift(node.val);
+            }
             if (node.left) arr.push(node.left);
             if (node.right) arr.push(node.right);
         }
         
-        if (counter % 2 === 0) {
-            result.push(temp.reverse());
-        } else {
-            result.push(temp);
-        }
+        result.push(temp);
+
         counter++;
     }
     
