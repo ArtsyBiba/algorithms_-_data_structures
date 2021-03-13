@@ -24,4 +24,13 @@ const maxDepth = function (root) {
     return levels;
 }
 
+// solution #2
+const maxDepth = function (root) {
+    if (!root) return null;
+    
+    let max = Math.max(maxDepth(root.left), maxDepth(root.right));
+    
+    return max + 1;
+}
+
 module.exports = maxDepth;
