@@ -24,3 +24,32 @@ var mergeTrees = function(root1, root2) {
     
     return root1;
 };
+
+// iterative solution
+var mergeTrees = function(root1, root2) {
+    if (!root1) return root2;
+    if (!root2) return root1;
+    
+    const stack = [];
+    stack.push([root1, root2]);
+    
+    while (stack.length > 0) {
+        const pair = stack.pop();
+        
+        if (!pair[0] || !pair[1]) continue;
+        
+        pair[0].val += pair[1].val;
+        
+        if (!pair[0].left)
+            pair[0].left = pair[1].left;
+        else
+            stack.push([pair[0].left, pair[1].left]);
+        
+        if (!pair[0].right)
+            pair[0].right = pair[1].right;
+        else
+            stack.push([pair[0].right, pair[1].right]);
+    }
+    
+    return root1;
+}
