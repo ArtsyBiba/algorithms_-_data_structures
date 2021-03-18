@@ -58,4 +58,22 @@ const topKFrequent = function steps(n) {
         .slice(0, k);
 }
 
+// further optimized with map
+const topKFrequent = function steps(n) {
+    let map = new Map();
+    
+    for (let num of nums) {
+        if (map.has(num)) {
+            map.set(num, map.get(num) + 1);
+        } else {
+            map.set(num, 1);
+        }
+    }
+    
+    return [...map]
+        .sort((a, b) => { return b[1] - a[1] }) 
+        .map(pair => pair[0])
+        .slice(0, k);
+}
+
 module.exports = topKFrequent;
