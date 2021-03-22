@@ -10,3 +10,35 @@
 var sortColors = function(nums) {
     return nums.sort((a,b) => a - b)
 };
+
+// alternative solution
+var sortColors = function(nums) {
+    let r = 0;
+    let w = 0;
+    let b = 0;
+    let counter = 0;
+    
+    for (let num of nums) {
+        if (num === 0) {
+            r++;
+        } else if (num === 1) {
+            w++;
+        } else b++;
+    }
+    
+    while (r > 0) {
+        nums[counter] = 0;
+        r--;
+        counter++;
+    }
+    while (w > 0) {
+        nums[counter] = 1;
+        w--;
+        counter++;
+    }
+    while (b > 0) {
+        nums[counter] = 2;
+        b--;
+        counter++;
+    }
+};
