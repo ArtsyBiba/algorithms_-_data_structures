@@ -6,6 +6,7 @@
 // We will use the integers 0, 1, and 2 to 
 // represent the color red, white, and blue, respectively.
 
+// brute force solution
 var sortColors = function(nums) {
-    
+    return nums.sort((a,b) => a - b)
 };
