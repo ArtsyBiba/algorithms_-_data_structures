@@ -8,6 +8,7 @@
 
 // For example, inverting [0,1,1] results in [1,0,0].
 
+// brute force solution
 var flipAndInvertImage = function(image) {
     const reversed = [];
     
@@ -22,4 +23,17 @@ var flipAndInvertImage = function(image) {
     }
     
     return reversed;
+};
+
+// alternative solution 
+var flipAndInvertImage = function(image) {
+    for (let i = 0; i < image.length; i++) {
+        for (let j = 0; j < image.length / 2; j++) {
+            let swap = image[i][j];
+            image[i][j] = +!image[i][image.length - 1 - j];
+            image[i][image.length - 1 - j] = +!swap;
+        }
+    }
+    
+    return image;
 };
