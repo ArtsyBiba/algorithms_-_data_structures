@@ -6,5 +6,15 @@
 // of children is separated by the null value (See examples)
 
 var preorder = function(root) {
+    const arr = [root];
+    const result = [];
     
+    while (arr.length) {
+        let node = arr.shift();
+        if (!node) continue;
+        result.push(node.val);
+        arr.unshift(...node.children);
+    }
+    
+    return result;
 };
