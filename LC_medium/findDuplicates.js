@@ -23,3 +23,20 @@ var findDuplicates = function(nums) {
     
     return result;
 };
+
+// alternative solution
+var findDuplicates = function(nums) {
+    let res = [];
+    let index = 0;
+    
+    for (let i = 0; i < nums.length; i++) {
+        index = Math.abs(nums[i]) - 1;
+        
+        if (nums[index] < 0)
+            res.push(index + 1);
+        else    
+            nums[index] *= -1;
+    }
+    
+    return res;
+};
