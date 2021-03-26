@@ -23,3 +23,15 @@ var sortArrayByParityII = function(nums) {
     
     return result;
 }
+
+var sortArrayByParityII = function(nums) {
+    let evenNums = nums.filter((i) => i % 2 === 0);
+    let oddNums = nums.filter((i) => i % 2 !== 0);
+    
+    let res = [];
+    for (let i = 0; i < nums.length / 2; i++) {
+        res.push(evenNums[i], oddNums[i]);
+    }
+    
+    return res;
+};
