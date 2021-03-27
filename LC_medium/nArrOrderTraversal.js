@@ -3,7 +3,7 @@
 // Nary-Tree input serialization is represented in their level order traversal, 
 // each group of children is separated by the null value (See examples).
 
-// recursive solution
+// iterative solution
 var levelOrder = function(root) {
     if (!root) return [];
     const arr = [root];
@@ -26,3 +26,28 @@ var levelOrder = function(root) {
     
     return result;
 };
+
+// recursive solution
+var levelOrder = function(root) {
+    const result = [];
+    if (root) {
+      traverseLevel(root, 0);
+    }
+    
+    return result;
+    
+    function traverseLevel(node, depth) {
+      if (node) {
+        if (!result[depth]) { 
+          result[depth] = [];
+        }
+        result[depth].push(node.val);
+      }
+      
+      depth++;
+      
+      for (const child of node.children) {
+        traverseLevel(child, depth);
+      }
+    }
+  };
