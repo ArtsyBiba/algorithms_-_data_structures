@@ -26,3 +26,25 @@ var swapNodes = function(head, k) {
     
     return head;
 };
+
+// optimized solution
+var swapNodes = function(head, k) {
+    let node = head;
+    let first = head;
+    let second = head;
+    
+    for (let i = 1; i < k; i++) {
+        node = node.next;
+        second = second.next;
+    }
+    
+    while (second.next) {
+        first = first.next;
+        second = second.next;
+    }
+    
+    let temp = first.val;
+    first.val = node.val;
+    node.val = temp;
+    return head;
+};
