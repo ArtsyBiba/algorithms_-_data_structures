@@ -20,7 +20,7 @@ var maxDepth = function(root) {
         
         for(let i = 0; i < len; i++){
             let node = queue.shift();
-            for (let child of node.children) queue.push(child);
+            queue.push(...node.children);
         }
         depthCount++;
     }
