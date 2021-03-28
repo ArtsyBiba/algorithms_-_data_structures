@@ -10,5 +10,22 @@
 // Return the maximum total number of units that can be put on the truck.
 
 var maximumUnits = function(boxTypes, truckSize) {
+    let total = 0;
+    let type = 0;
     
+    boxTypes.sort((a,b) => b[1] - a[1]);
+    
+    while (truckSize > 0) {
+        if (type > boxTypes.length - 1) return total;
+        if (truckSize > boxTypes[type][0]) {
+            total += boxTypes[type][0] * boxTypes[type][1];
+            truckSize -= boxTypes[type][0];
+            type++;
+        } else {
+            total += boxTypes[type][1];
+            truckSize--;
+        }
+    }
+    
+    return total;
 };
