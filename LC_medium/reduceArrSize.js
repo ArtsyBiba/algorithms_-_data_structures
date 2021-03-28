@@ -33,3 +33,30 @@ var minSetSize = function(arr) {
     
     return min;
 };
+
+var minSetSize = function(arr) {
+    const map = {};
+    
+    for (let num of arr) {
+        if (map[num]) {
+            map[num]++;
+        } else map[num] = 1;
+    }
+    
+    const frequency = [];
+    
+    for (let key in map) {
+        frequency.push(map[key]);
+    }
+    
+    frequency.sort((a,b) => b - a);
+    
+    let step = 0;
+    let sum = 0;
+    
+    for (const val of frequency) {
+        sum += val;
+        step++;
+        if (sum >= Math.floor(arr.length / 2)) return step;
+    }
+};
