@@ -5,5 +5,13 @@
 // Return the sorted array.
 
 var frequencySort = function(nums) {
+    const map = {};
     
+    for (let num of nums) {
+        if (map[num]) {
+            map[num]++;
+        } else map[num] = 1;
+    }
+    
+    return nums.sort((a,b) => map[a] - map[b] || b - a);
 };
