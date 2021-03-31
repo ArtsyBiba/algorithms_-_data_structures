@@ -13,3 +13,11 @@ var invertTree = function(root) {
     
     return root;
 };
+
+// recursive solution
+var invertTree = function(root) {
+    if (root) {
+        [root.left, root.right] = [invertTree(root.right), invertTree(root.left)];
+    }
+    return root;
+};
