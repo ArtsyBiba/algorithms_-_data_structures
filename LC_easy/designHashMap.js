@@ -7,3 +7,31 @@
 // int get(int key) returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key.
 // void remove(key) removes the key and its corresponding value if the map contains the mapping for the key.
 
+ var MyHashMap = function() {
+    this._keys = [];
+    this._val = [];
+};
+
+MyHashMap.prototype.put = function(key, value) {
+    if (this._keys[key] === undefined) {
+        this._val.push(value);
+        this._keys[key] = this._val.length - 1;
+    } else {
+      this._val[this._keys[key]] = value;
+    }
+};
+
+MyHashMap.prototype.get = function(key) {
+    if (this._keys[key] === undefined) {
+        return -1;
+    } else {
+      return this._val[this._keys[key]];
+    }
+};
+
+MyHashMap.prototype.remove = function(key) {
+    if (this._keys[key] !== undefined) {
+      this._val[this._keys[key]] = undefined;
+      this._keys[key] = undefined;
+    }
+};
