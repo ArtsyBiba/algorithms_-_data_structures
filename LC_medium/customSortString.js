@@ -9,5 +9,32 @@
 // Return any permutation of T (as a string) that satisfies this property.
 
 var customSortString = function(S, T) {
+    const map = {};
+    let result = '';
     
+    for (let char of T) {
+        if (map[char]) {
+            map[char]++;
+        } else map[char] = 1;
+    }
+    
+    for (let char of S) {
+        if (map[char]) {
+            while (map[char] > 0) {
+                result = result + char;
+                map[char]--;
+            }
+        }
+    }
+    
+    for (let key in map) {
+        if (map[key] > 0) {
+            while (map[key] > 0) {
+                result = result + key;
+                map[key]--;
+            }
+        }
+    }
+        
+    return result;
 };
