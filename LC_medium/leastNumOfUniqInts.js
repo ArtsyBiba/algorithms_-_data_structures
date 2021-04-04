@@ -17,7 +17,6 @@ var findLeastNumOfUniqueInts = function(arr, k) {
     }
     
     freq.sort((a,b) => a - b);
-    console.log(freq)
     
     while (k >= freq[0]) {
         const val = freq.shift();
