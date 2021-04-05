@@ -1,5 +1,6 @@
 // Given a string, sort it in decreasing order based on the frequency of characters.
 
+// initial solution
 var frequencySort = function(s) {
     const map = {};
     
@@ -23,6 +24,27 @@ var frequencySort = function(s) {
             result += pair[0];
             count--;
         }
+    }
+    
+    return result;
+};
+
+// optimized solution
+var frequencySort = function(s) {
+    const map = {};
+    
+    for (let char of s) {
+        if (map[char]) {
+            map[char]++;
+        } else map[char] = 1;
+    }
+    
+    const sorted = Object.keys(map).sort((a, b) => map[b] - map[a]);
+    
+    let result = '';
+    for (let i = 0; i < sorted.length; i++) {
+        const char = sorted[i];
+        result += char.repeat(map[char]);
     }
     
     return result;
