@@ -8,6 +8,11 @@
 // Given the array nums after the rotation and an integer target, return the index of 
 // target if it is in nums, or -1 if it is not in nums.
 
+// initial solution
 var search = function(nums, target) {
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === target) return i;
+    }  
     
+    return -1;
 };
