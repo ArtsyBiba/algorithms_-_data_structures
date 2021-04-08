@@ -8,6 +8,34 @@
 // The right subtree of a node contains only nodes with keys greater than or equal to the node's key.
 // Both the left and right subtrees must also be binary search trees.
 
+// brute force solution
 var findMode = function(root) {
+    if (!root) return null;
     
+    const map = {};
+    const arr = [root];
+    
+    while (arr.length) {
+        const node = arr.shift();
+        if (map[node.val]) {
+            map[node.val]++;
+        } else map[node.val] = 1;
+        
+        if (node.left) arr.push(node.left);
+        if (node.right) arr.push(node.right);
+    }
+    
+    let result = [];
+    let max = 0;
+    for (let key in map) {
+        if (map[key] > max) {
+            result = [key];
+            max = map[key];
+        } 
+        if (map[key] === max && !result.includes(key)) {
+            result.push(key);
+        }
+    }
+    
+    return result;
 };
