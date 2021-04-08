@@ -39,3 +39,30 @@ var findMode = function(root) {
     
     return result;
 };
+
+// optimized solution
+var findMode = function(root) {
+    const output = [];
+    if (!root) return output;
+    const map = {};
+    const arr = [root];
+    let most = 0;
+    
+    while (arr.length) {
+        const node = arr.shift();
+        
+        if (map[node.val]) {
+            map[node.val]++;
+        } else map[node.val] = 1;
+
+        if (map[node.val] > most) most = map[node.val];
+        if (node.left) arr.push(node.left);
+        if (node.right) arr.push(node.right);
+    }
+    
+    for (let n in map) {
+        if (map[n] === most) output.push(n);
+    }
+    
+    return output;
+};
