@@ -19,3 +19,26 @@ var wordPattern = function(pattern, s) {
     
     return true;
 };
+
+// optimized solution
+var wordPattern = function(pattern, s) {
+    const split = s.split(" ");
+    if (split.length !== pattern.length) return false;
+    
+    const patMap = {};
+    const sMap = {};
+    
+    for (let i = 0; i < pattern.length; i++) {
+        if (patMap[pattern[i]] && patMap[pattern[i]] !== split[i]) return false;
+        if (!patMap[pattern[i]]) {
+            patMap[pattern[i]] = split[i];
+        }
+        
+        if (sMap[split[i]] && sMap[split[i]] !== pattern[i]) return false;
+        if (!sMap[split[i]]) {
+            sMap[split[i]] = pattern[i];
+        }
+    }
+    
+    return true;
+};
