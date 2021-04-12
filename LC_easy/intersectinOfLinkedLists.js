@@ -23,11 +23,30 @@ var getIntersectionNode = function(headA, headB) {
         }
         
         if (curB.next) {
-            curB = curB.next 
+            curB = curB.next;
         } else {
             curB = headA;
         }
     }
     
     return curA;
+};
+
+// alternative solution usind set
+var getIntersectionNode = function(headA, headB) {
+    const map = new Set();
+    
+    let cur = headA;
+    while (cur) {
+        map.add(cur);
+        cur = cur.next;
+    }
+    
+    cur = headB;
+    while (cur) {
+        if (map.has(cur)) return cur;
+        cur = cur.next;
+    }
+    
+    return null;
 };
