@@ -9,5 +9,13 @@
 // repeated k or more times, otherwise return false.
 
 var containsPattern = function(arr, m, k) {
+    let ans = 0;
     
+    for(let i = 0; i + m < arr.length; i++) {
+        if(arr[i] !== arr[i + m]) ans = 0;  
+        if(arr[i] === arr[i + m]) ans++;
+        if(ans === (k - 1) * m) return true;
+    }
+    
+    return false; 
 };
