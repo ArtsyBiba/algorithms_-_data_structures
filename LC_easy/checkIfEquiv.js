@@ -6,5 +6,18 @@
 // array elements concatenated in order forms the string.
 
 var arrayStringsAreEqual = function(word1, word2) {
+    return word1.join('') === word2.join('');
+};
+
+// without join
+var arrayStringsAreEqual = function(word1, word2) {
+    let wordOne = '';
+    let wordTwo = '';
     
+    for(let i = 0; i < Math.max(word1.length, word2.length); i++) {
+        if(word1[i]) wordOne += word1[i];
+        if(word2[i]) wordTwo += word2[i];
+    }
+    
+    return wordOne === wordTwo;  
 };
