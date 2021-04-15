@@ -22,3 +22,27 @@ var bstToGst = function(root) {
 
     return root;
 };
+
+// iterative solution
+var bstToGst = function(root) {
+    let cur = root;
+    let arr = [];
+    let count = 0;
+    
+    while (true) {
+        if (cur !== null) {
+            arr.push(cur);
+            cur = cur.right;
+        } else {
+            if (arr.length === 0) break
+            cur = arr.pop();
+           
+            count += cur.val;
+            cur.val = count;
+            
+            cur = cur.left;
+        }
+    }
+    
+    return root;
+};
