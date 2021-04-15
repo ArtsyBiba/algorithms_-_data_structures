@@ -10,5 +10,16 @@
 // You are allowed to pass through points that appear later in the order, but these do not count as visits.
 
 var minTimeToVisitAllPoints = function(points) {
-    
+    if (points.length < 2) return 0;
+
+    let result = 0;
+
+    for (let i = 1; i < points.length; i++) {
+    const x = Math.abs(points[i - 1][0] - points[i][0]);
+    const y = Math.abs(points[i - 1][1] - points[i][1]);
+
+    result += Math.max(x, y);
+    }
+
+    return result;
 };
