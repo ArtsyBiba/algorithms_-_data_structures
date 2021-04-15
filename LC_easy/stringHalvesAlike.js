@@ -9,5 +9,15 @@
 // Return true if a and b are alike. Otherwise, return false.
 
 var halvesAreAlike = function(s) {
+    const mid = s.length / 2;
+    const vowels = 'aeiou';
+    let vowelsOne = 0;
+    let vowelsTwo = 0;
     
+    for (let i = 0; i < s.length; i++) {
+        if (i < mid && vowels.includes(s[i].toLowerCase())) vowelsOne++;
+        if (i >= mid && vowels.includes(s[i].toLowerCase())) vowelsTwo++;
+    }
+    
+    return vowelsOne === vowelsTwo;
 };
