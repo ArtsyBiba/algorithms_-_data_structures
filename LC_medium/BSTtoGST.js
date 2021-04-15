@@ -8,6 +8,17 @@
 // The right subtree of a node contains only nodes with keys greater than the node's key.
 // Both the left and right subtrees must also be binary search trees.
 
+// recursive solution
 var bstToGst = function(root) {
+    const getSum = (node, sum) => {
+        if (!node) return sum;
     
+        node.val += getSum(node.right, sum);
+
+        return getSum(node.left, node.val);
+    };
+    
+    getSum(root, 0);
+
+    return root;
 };
