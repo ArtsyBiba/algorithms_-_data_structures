@@ -21,3 +21,16 @@ var halvesAreAlike = function(s) {
     
     return vowelsOne === vowelsTwo;
 };
+
+// optimized solution
+var halvesAreAlike = function(s) {
+    let vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+    let total = 0;
+    
+    for(let i = 0; i < s.length / 2; i++) {
+        if (vowels.includes(s[i])) total++;
+        if (vowels.includes(s[s.length-i-1])) total--;
+    }
+    
+    return total === 0;
+};
