@@ -12,3 +12,21 @@
 var truncateSentence = function(s, k) {
     return s.split(' ').slice(0, k).join(' ');
 };
+
+// alternative solution
+var truncateSentence = function(s, k) {
+    let result = '';
+    let counter = 0;
+    
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === ' ') {
+            counter++;
+            if (counter === k) return result;
+            result += s[i];
+        } else {
+            result += s[i];
+        }
+    }
+    
+    return result;
+};
