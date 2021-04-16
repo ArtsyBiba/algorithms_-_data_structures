@@ -15,10 +15,10 @@ var minTimeToVisitAllPoints = function(points) {
     let result = 0;
 
     for (let i = 1; i < points.length; i++) {
-    const x = Math.abs(points[i - 1][0] - points[i][0]);
-    const y = Math.abs(points[i - 1][1] - points[i][1]);
+        const x = Math.abs(points[i - 1][0] - points[i][0]);
+        const y = Math.abs(points[i - 1][1] - points[i][1]);
 
-    result += Math.max(x, y);
+        result += Math.max(x, y);
     }
 
     return result;
