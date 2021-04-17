@@ -12,6 +12,31 @@
 // A preorder traversal of a binary tree displays the value of the node first, 
 // then traverses Node.left, then traverses Node.right.
 
+// initial solution
 var bstFromPreorder = function(preorder) {
+    let head = new TreeNode(preorder[0]);
     
+    for (let i = 1; i < preorder.length; i++) {
+        let curr = head;
+        
+        while (true) {
+            if (preorder[i] > curr.val) {
+                if (curr.right) { 
+                    curr = curr.right; 
+                } else { 
+                    curr.right = new TreeNode(preorder[i]); 
+                    break; 
+                }
+            } else {
+                if (curr.left) { 
+                    curr = curr.left; 
+                } else { 
+                    curr.left = new TreeNode(preorder[i]); 
+                    break; 
+                }
+            }
+        } 
+    } 
+    
+    return head; 
 };
