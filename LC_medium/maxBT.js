@@ -7,5 +7,14 @@
 // Return the maximum binary tree built from nums.
 
 var constructMaximumBinaryTree = function(nums) {
+    if (!nums.length) return null;
     
+    const max = Math.max(...nums);
+    const index = nums.indexOf(max);
+    const head = new TreeNode(max);
+    
+    head.left = constructMaximumBinaryTree(nums.slice(0, index));
+    head.right = constructMaximumBinaryTree(nums.slice(index + 1));
+    
+    return head;
 };
