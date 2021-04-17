@@ -40,3 +40,19 @@ var bstFromPreorder = function(preorder) {
     
     return head; 
 };
+
+// recursive solution 
+var bstFromPreorder = function(preorder) {
+    const builder = function (lower, upper) {
+        if (!preorder.length) return null;
+        if (preorder[0] < lower || preorder[0] > upper) return null;
+        
+        let node = new TreeNode(preorder.shift());
+        node.left = builder(lower, node.val); 
+        node.right = builder(node.val, upper);
+        
+        return node;
+    }
+    
+    return builder(0, 10 ** 8);
+};
