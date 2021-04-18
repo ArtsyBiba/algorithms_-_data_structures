@@ -10,5 +10,13 @@
 // Return the maximum number of coins which you can have.
 
 var maxCoins = function(piles) {
+    const sorted = piles.sort((a,b) => b - a);
+    let sum = 0;
     
+    for (let i = 0; i < sorted.length; i += 2) {
+        sum += sorted[i + 1];
+        sorted.pop();
+    }
+    
+    return sum;
 };
