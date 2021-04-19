@@ -12,5 +12,19 @@
 // the requirements exists.
 
 var restoreMatrix = function(rowSum, colSum) {
+    const rows = rowSum.length; 
+    const cols = colSum.length;
+
+    const result = Array.from(Array(rows), () => new Array(cols).fill(0));
     
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+              const val = Math.min(rowSum[i], colSum[j]);
+              result[i][j] = val;
+              rowSum[i] -= val;
+              colSum[j] -= val;
+        }
+    }
+    
+    return result;
 };
