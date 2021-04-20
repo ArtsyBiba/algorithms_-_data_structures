@@ -29,3 +29,21 @@ var findSmallestSetOfVertices = function(n, edges) {
     
     return result;
 };
+
+// optimized solution
+var findSmallestSetOfVertices = function(n, edges) {
+    const map = {};
+    const result = [];
+    
+    for (let edge of edges) {
+        if (map[edge[1]]) {
+            map[edge[1]]++;
+        } else map[edge[1]] = 1;
+    }
+
+    for (let i = 0; i < n; i++) {
+        if (!map[i]) result.push(i); 
+    }
+        
+    return result;
+};
