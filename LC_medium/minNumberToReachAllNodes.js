@@ -8,5 +8,24 @@
 // Notice that you can return the vertices in any order.
 
 var findSmallestSetOfVertices = function(n, edges) {
+    const map = {};
+    const result = [];
     
+    for (let edge of edges) {
+        if (map[edge[0]]) {
+            map[edge[0]]++;
+        } else map[edge[0]] = 1;
+    }
+    
+    for (let edge of edges) {
+        if (map[edge[1]]) map[edge[1]] = 0;
+    }
+    
+    for (let key in map) {
+        if (map[key] !== 0) {
+            result.push(Number(key));
+        }
+    }
+    
+    return result;
 };
