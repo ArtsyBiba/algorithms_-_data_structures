@@ -10,5 +10,21 @@
 // add to make the resulting string valid.
 
 var minAddToMakeValid = function(S) {
+    const map = {
+        ')': '(',
+    };
     
+    const arr = [];
+    
+    for (let i = 0; i < S.length; i++) {
+        if (S[i] === '(') {
+            arr.push(S[i]);
+        } else {
+            if (arr[arr.length - 1] === map[S[i]]) {
+                arr.pop();
+            } else arr.push(S[i]);
+        }
+    }
+    
+    return arr.length;
 };
