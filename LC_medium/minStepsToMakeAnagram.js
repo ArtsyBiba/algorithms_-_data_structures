@@ -10,8 +10,7 @@ var minSteps = function(s, t) {
     const mapS = createMap(s);
     const mapT = createMap(t);
     let result = 0;
-    console.log(mapS)
-    console.log(mapT)
+
     for (let key in mapS) {
         if (!mapT[key]) {
             result += mapS[key];
