@@ -7,5 +7,21 @@
 // Return the number of teams you can form given the conditions. (soldiers can be part of multiple teams).
 
 var numTeams = function(rating) {
+    let count = 0;
     
+    for (let i = 0; i < rating.length - 2; i++) {
+        const first = rating[i];
+        
+        for (let j = i + 1; j < rating.length; j++) {
+            const second = rating[j];
+            
+            if (first > second) {
+                count += rating.slice(j + 1).filter(item => item < second).length;
+            } else {
+                count += rating.slice(j + 1).filter(item => item > second).length;
+            }  
+        }
+    }
+    
+    return count;
 };
