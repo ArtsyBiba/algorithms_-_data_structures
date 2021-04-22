@@ -9,6 +9,7 @@
 // Given a parentheses string, return the minimum number of parentheses we must 
 // add to make the resulting string valid.
 
+// initial solution
 var minAddToMakeValid = function(S) {
     const map = {
         ')': '(',
@@ -27,4 +28,23 @@ var minAddToMakeValid = function(S) {
     }
     
     return arr.length;
+};
+
+// optimized solution
+var minAddToMakeValid = function(S) {
+    let open = 0;
+    let close = 0;
+    
+    for (let i = 0; i < S.length; i++) {
+        if (S[i] === '(') {
+            open++;
+        } else {
+            if (open > 0) {
+                open--;
+            } else {
+                close++;
+            }
+        }
+    }
+    return open + close;
 };
