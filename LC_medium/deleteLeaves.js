@@ -6,5 +6,16 @@
 // it should also be deleted (you need to continue doing that until you can't).
 
 var removeLeafNodes = function(root, target) {
+    if (!root) return null;
     
+    root.left = removeLeafNodes(root.left, target);
+    root.right = removeLeafNodes(root.right, target);
+    
+    if (!root.left && !root.right) {
+        if (root.val === target) {
+            return null;
+        }
+    }
+    
+    return root;
 };
