@@ -14,5 +14,25 @@
 // You may return the answer in any order.
 
 var findAndReplacePattern = function(words, pattern) {
+    const result = [];
     
+    for (let word of words) {
+        const wMap = {};
+        const pMap = {}
+        let match = true;
+        
+        for (let i = 0; i < word.length; i++) {
+            if (wMap[word[i]] !== pMap[pattern[i]]) {
+                match = false;
+                break;
+            }
+            pMap[pattern[i]] = i;
+            wMap[word[i]] = i;
+        }
+        
+        
+        if (match) result.push(word);
+    }
+    
+    return result;
 };
