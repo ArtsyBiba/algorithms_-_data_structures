@@ -9,5 +9,13 @@
 // path from the root of the tree to the node with that label.
 
 var pathInZigZagTree = function(label) {
+    const n = Math.log2(label) | 0;
+    const res = [label];
     
+    for (let i = n; i > 0; i--) {
+        label = (2 ** i * 3 - label - 1) >> 1;
+        res.push(label);
+    }
+    
+    return res.reverse();
 };
