@@ -15,5 +15,19 @@
 // Given the number of friends, n, and an integer k, return the winner of the game.
 
 var findTheWinner = function(n, k) {
+    let arr = [];
     
+    for (var i = 1; i <= n; i++) {
+        arr.push(i);
+    }
+    
+    let start = 0;
+    while (arr.length > 1) {
+        n = arr.length;
+        let index = (start + k - 1) % n;
+        arr = arr.filter((el,i) => i !== index);
+        start = index;
+    }
+    
+    return arr[0];
 };
