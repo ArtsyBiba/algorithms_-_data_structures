@@ -10,5 +10,19 @@
 // Return the number of rectangles that can make a square with a side length of maxLen.
 
 var countGoodRectangles = function(rectangles) {
+    let result = 0;
+    let max = 0;
     
+    for (let i = 0; i < rectangles.length; i++) {
+        const min = Math.min(rectangles[i][0], rectangles[i][1]);
+        
+        if (min < max) {
+            continue;
+        } else if (min > max) {
+            result = 1;
+            max = Math.min(rectangles[i][0], rectangles[i][1]);
+        } else result++;
+    }
+    
+    return result;
 };
