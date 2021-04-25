@@ -6,5 +6,13 @@
 // Return the highest altitude of a point.
 
 var largestAltitude = function(gain) {
+    let max = 0;
+    let curr = 0;
     
+    for (let i = 0; i < gain.length; i++) {
+        curr += gain[i];
+        if (curr > max) max = curr;
+    }
+    
+    return max;
 };
