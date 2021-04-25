@@ -14,6 +14,20 @@ var squareIsWhite = function(coordinates) {
         
     if (number % 2 !== 0 && map[letter] % 2 !== 0) return false;
     if (number % 2 === 0 && map[letter] % 2 === 0) return false;
-    
+
     return true;
+};
+
+// optimized solution
+var squareIsWhite = function(coordinates) {
+    const columns = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+    
+    let i = 0;
+    
+    while (coordinates[0] !== columns[i]) i++;
+    
+    let num = i + Number(coordinates[1]);
+    
+    
+    return num % 2 === 0 
 };
