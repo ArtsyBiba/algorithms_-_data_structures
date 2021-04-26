@@ -15,3 +15,17 @@ var maxProduct = function(nums) {
     
     return max;
 };
+
+// two pointers solution
+var maxProduct = function(nums) {
+    let max = 0;
+    let start = 0;
+    let end = nums.length - 1;
+    
+    while (end > start) {
+        max = Math.max(max, (nums[end] - 1) * (nums[start] - 1));
+        nums[start] < nums[end] ? start++ : end--;
+    }
+    
+    return max;
+};
