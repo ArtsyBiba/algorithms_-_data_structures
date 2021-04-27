@@ -13,5 +13,15 @@
 // Return the minimum number of flips required to form target.
 
 var minFlips = function(target) {
+    let count = 0;
+    let last = '0';
     
+    for (let cur of target) {
+        if (cur !== last) {
+            count++;
+            last = cur;
+        }
+    }
+    
+    return count;
 };
