@@ -16,5 +16,37 @@
 // will transform into 1 using these steps and that the power of x is will fit in 32 bit signed integer.
 
 var getKth = function(lo, hi, k) {
+    const arr = [];
+    let cur = lo;
     
+    while (cur <= hi) {
+        let power = countPower(cur);
+        
+        arr.push([power, cur])
+        
+        cur++;
+    }
+    
+    arr.sort((a, b) => a[0] - b[0]);
+    
+    const result = [];
+    for (let pair of arr) {
+        result.push(pair[1]);
+    }
+    
+    return result[k - 1];
+};
+
+const countPower = function(cur) {
+    let count = 0;
+    
+    while (cur !== 1) {
+        if (cur % 2 === 0) {
+            cur = cur / 2;
+        } else cur = 3 * cur + 1;
+        
+        count++;
+    }  
+           
+    return count;
 };
