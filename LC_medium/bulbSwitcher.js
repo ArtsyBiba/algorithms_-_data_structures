@@ -14,12 +14,12 @@
 
 var minFlips = function(target) {
     let count = 0;
-    let last = '0';
+    let cur = '0';
     
-    for (let cur of target) {
-        if (cur !== last) {
+    for (let bulb of target) {
+        if (bulb !== cur) {
             count++;
-            last = cur;
+            cur = bulb;
         }
     }
     
