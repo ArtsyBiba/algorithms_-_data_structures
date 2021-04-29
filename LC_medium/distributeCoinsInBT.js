@@ -7,5 +7,22 @@
 // Return the number of moves required to make every node have exactly one coin.
 
 var distributeCoins = function(root) {
+    let count = 0;
     
+    const dfs = function(node) {
+        if (!node) return 0;
+        
+        let giveOrReceiveFromLeftChild = dfs(node.left);
+        let giveOrReceiveFromRightChild = dfs(node.right);
+        
+        let giveOrReceiveToParent = node.val + giveOrReceiveFromLeftChild + giveOrReceiveFromRightChild - 1;
+        
+        count += Math.abs(giveOrReceiveToParent);
+        
+        return giveOrReceiveToParent;
+    }
+    
+    dfs(root);
+    
+    return count;
 };
