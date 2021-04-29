@@ -11,6 +11,30 @@
 // Return the kth string of this list or return an empty 
 // string if there are less than k happy strings of length n.
 
-var getHappyString = function(n, k) {
+const getHappyString = function(n, k) {
+    const strings = [];
     
+    formArray(strings, ['a','b','c'], "", 3,  n);
+    strings.sort();
+    
+    if (strings.length < k) return '';
+    
+    return strings[k - 1];
 };
+
+const formArray = function(strings, s, pre, l, n){
+    if (n === 0) { 
+        strings.push(pre);
+        return; 
+    } 
+    
+    for (let i = 0; i < l; i++) { 
+        let newPre; 
+          
+        if (pre[pre.length - 1] !== s[i]) { 
+            newPre = pre + s[i];
+            formArray(strings, s, newPre, l, n - 1); 
+        }
+        
+    } 
+}
