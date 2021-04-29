@@ -7,5 +7,15 @@
 // You may return the answer in any order.
 
 var commonChars = function(A) {
+    const result = [];
+    const firstWord = [...A[0]];
     
+    for (const letter of firstWord) {
+        if (A.every(word => word.includes(letter))) {
+            result.push(letter);
+            A = A.map(word => word.replace(letter, ''));
+        }
+    }
+    
+    return result;
 };
