@@ -6,5 +6,32 @@
 // don't appear in arr2 should be placed at the end of arr1 in ascending order.
 
 var relativeSortArray = function(arr1, arr2) {
+    const map = {};
     
+    for (let num of arr1) {
+        if (map[num]) {
+            map[num]++;
+        } else map[num] = 1;
+    }
+ 
+    const result = [];
+    
+    for (let num of arr2) {
+        let count = map[num];
+        while (count > 0) {
+            result.push(num);
+            count--;
+        }
+        delete map[num];
+    }
+    
+    for (let key in map) {
+        let count = map[key];
+        while (count > 0) {
+            result.push(key);
+            count--;
+        }
+    }
+    
+    return result;
 };
