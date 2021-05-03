@@ -11,6 +11,28 @@
 
 // Given an array of strings emails where we send one email to each email[i], return the number of different addresses that actually receive mails.
 
-var numUniqueEmails = function(emails) {
+const numUniqueEmails = function(emails) {
+    const filteredEmails = {};
     
+    for (const email of emails) {
+        const filtered = filterEmail(email);
+        
+        if (filteredEmails[filtered]) {
+            filteredEmails[filtered]++;
+        } else filteredEmails[filtered] = 1;
+    }
+    
+    return Object.keys(filteredEmails).length;
 };
+
+const filterEmail = function(email) {
+    const split = email.split('@');
+    let name = split[0];
+    
+    for (let i = 0; i < name.length; i++) {
+        if (name[i] === '.') name = name.substring(0, i) + name.substring(i + 1, name.length);
+        if (name[i] === '+') name = name.slice(0, i);
+    }
+
+    return name + '@' + split[1];
+}
