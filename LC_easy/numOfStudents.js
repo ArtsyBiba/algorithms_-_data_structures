@@ -8,6 +8,7 @@
 
 // You are given two integer arrays students and sandwiches where sandwiches[i] is the type of the i​​​​​​th sandwich in the stack (i = 0 is the top of the stack) and students[j] is the preference of the j​​​​​​th student in the initial queue (j = 0 is the front of the queue). Return the number of students that are unable to eat.
 
+// initial solution
 var countStudents = function(students, sandwiches) {
     let steps = 0;
     const maxSteps = students.length ** 2;
@@ -24,4 +25,22 @@ var countStudents = function(students, sandwiches) {
     }
     
     return students.length;    
+};
+
+// optimized solution
+var countStudents = function(students, sandwiches) {
+    let tooPicky = 0;
+    
+    while (tooPicky < students.length) {
+        if (students[0] === sandwiches[0]) {
+            students.shift();
+            sandwiches.shift();
+            tooPicky = 0;
+        } else {
+            students.push(students.shift());
+            tooPicky++;
+        }
+    }
+    
+    return students.length;
 };
