@@ -11,5 +11,22 @@
 // 100. Determine the perimeter of the island.
 
 var islandPerimeter = function(grid) {
+    let perim = 0;
     
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[0].length; j++) {
+            if (grid[i][j] === 1) {
+                let sides = 0;
+            
+                if (i === 0 || !grid[i - 1][j]) sides++;
+                if (!grid[i][j - 1]) sides++;
+                if (i > grid.length - 2 || !grid[i + 1][j]) sides++;
+                if (!grid[i][j + 1]) sides++;
+            
+                perim += sides;
+            }
+        }
+    }
+    
+    return perim;
 };
