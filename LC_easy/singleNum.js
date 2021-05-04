@@ -18,3 +18,14 @@ var singleNumber = function(nums) {
         if (map[key] === 1) return key;
     }
 };
+
+// alternative solution
+var singleNumber = function(nums) {
+    nums.sort((a, b) => a - b);
+
+    for (let i = 0; i < nums.length; i += 2) {
+        if (nums[i] !== nums[i + 1]) {
+            return nums[i]
+        };
+    }
+};
