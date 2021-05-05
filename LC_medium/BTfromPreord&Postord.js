@@ -1,0 +1,7 @@
+// Return any binary tree that matches the given preorder and postorder traversals.
+
+// Values in the traversals pre and post are distinct positive integers.
+
+var constructFromPrePost = function(pre, post) {
+    
+};
