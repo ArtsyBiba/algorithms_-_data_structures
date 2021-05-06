@@ -10,5 +10,12 @@
 // A prefix of a string S is any leading contiguous substring of S.
 
 var isPrefixOfWord = function(sentence, searchWord) {
+    const split = sentence.split(' ');
+    const len = searchWord.length;
     
+    for (let i = 0; i < split.length; i++) {
+        if (split[i].slice(0, len) === searchWord) return i + 1;
+    }
+    
+    return -1;
 };
