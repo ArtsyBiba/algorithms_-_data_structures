@@ -5,6 +5,28 @@
 
 // Return the number of good splits you can make in s.
 
+// brute force solution
 var numSplits = function(s) {
+    let count = 0;
     
+    for (let i = 1; i < s.length; i++) {
+        const left = createMap(s.slice(0, i));
+        const right = createMap(s.slice(i));
+
+        if (Object.keys(left).length === Object.keys(right).length) count++;
+    }
+    
+    return count;
 };
+
+const createMap = function(sub) {
+    const map = {};
+    
+    for (const char of sub) {
+        if (map[char]) {
+            map[char]++;
+        } else map[char] = 1;
+    }
+    
+    return map;
+}
