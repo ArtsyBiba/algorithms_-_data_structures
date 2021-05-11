@@ -9,5 +9,25 @@
 // Leetcode bank at the end of the nth day.
 
 var totalMoney = function(n) {
+    if (n <= 1) return n;
     
+    let result = 0;
+    let weekStart = 1;
+    let currDay = 1;
+    let currSum = 1;
+    
+    while (currDay <= n) {
+        if (currDay % 7 === 0) {
+            result += currSum;
+            weekStart++;
+            currSum = weekStart;
+            currDay++;
+        } else {
+            result += currSum;
+            currSum++;
+            currDay++;
+        }
+    }
+    
+    return result;
 };
