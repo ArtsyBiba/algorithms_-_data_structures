@@ -46,3 +46,24 @@ var getSumAbsoluteDifferences = function(nums) {
     
     return result;
 };
+
+// better solution
+var getSumAbsoluteDifferences = function(nums) {
+    const result = [];
+    let neg = 0;
+    let pos = nums.reduce((cur, acc) => cur + acc);
+    
+    for (let i = 0; i < nums.length; i++) {
+        pos -= nums[i];
+        let sum = 0;
+        
+        sum += neg + nums[i] * i;
+        sum += pos - nums[i] * (nums.length - i - 1);
+        
+        result.push(sum);
+        
+        neg -= nums[i];
+    }
+    
+    return result;
+};
