@@ -23,3 +23,26 @@ var getSumAbsoluteDifferences = function(nums) {
     
     return result;
 };
+
+// slightly optimized
+var getSumAbsoluteDifferences = function(nums) {
+    const result = [];
+    const map = {};
+    
+    for (let i = 0; i < nums.length; i++) {
+        if (map[nums[i]]) {
+            result.push(map[nums[i]]);
+        } else {
+            let sum = 0;
+            
+            for (let j = 0; j < nums.length; j++) {
+                sum += Math.abs(nums[i] - nums[j]);
+            }
+            
+            result.push(sum);
+            map[nums[i]] = sum;
+        }
+    }
+    
+    return result;
+};
