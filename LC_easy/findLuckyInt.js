@@ -5,5 +5,23 @@
 // lucky integers return the largest of them. If there is no lucky integer return -1.
 
 var findLucky = function(arr) {
+    const map = {};
     
+    for (const num of arr) {
+        if (map[num]) {
+            map[num]++;
+        } else map[num] = 1;
+    }
+    
+    let lucky = -1;
+    
+    for (const key in map) {
+        if (Number(key) === map[key]) {
+            if (map[key] > lucky) {
+                lucky = map[key];
+            }
+        }
+    }
+    
+    return lucky;
 };
