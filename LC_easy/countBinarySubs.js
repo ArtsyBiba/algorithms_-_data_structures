@@ -7,5 +7,22 @@
 // the number of times they occur.
 
 var countBinarySubstrings = function(s) {
+    const group = [];
+    let count = 1;
+    let sum = 0; 
+    let prevCount = 0;
     
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] === s[i + 1]) {
+            count++;
+        } else {
+            if (prevCount) {
+                sum += prevCount <= count ? prevCount : count;
+            }
+            prevCount = count;
+            count = 1;
+        }
+    }
+    
+    return sum;    
 };
