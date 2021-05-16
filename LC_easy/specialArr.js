@@ -8,5 +8,19 @@
 // It can be proven that if nums is special, the value for x is unique.
 
 var specialArray = function(nums) {
+    let curr = 1;
+    let count = 0;
     
+    while (curr <= nums.length) {
+        for (const num of nums) {
+            if (num >= curr) {
+                count++;
+            }
+        }
+        if (count === curr) return curr;
+        curr++;
+        count = 0;
+    }
+    
+    return -1;
 };
